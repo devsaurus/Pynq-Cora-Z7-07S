@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sat Apr 11 13:03:23 2020" VIVADOVERSION="2019.1">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Thu Jan  4 11:54:25 2024" VIVADOVERSION="2022.2">
 
-  <SYSTEMINFO ARCH="zynq" BOARD="digilentinc.com:cora-z7-07s:part0:1.0" DEVICE="7z007s" NAME="design_1" PACKAGE="clg400" SPEEDGRADE="-1"/>
+  <SYSTEMINFO ARCH="zynq" BOARD="digilentinc.com:cora-z7-07s:part0:1.1" DEVICE="7z007s" NAME="design_1" PACKAGE="clg400" SPEEDGRADE="-1"/>
 
   <EXTERNALPORTS>
     <PORT DIR="IO" NAME="DDR_cas_n" SIGIS="undef" SIGNAME="processing_system7_0_DDR_CAS_n">
@@ -29,7 +29,7 @@
         <CONNECTION INSTANCE="processing_system7_0" PORT="DDR_CS_n"/>
       </CONNECTIONS>
     </PORT>
-    <PORT DIR="IO" NAME="DDR_reset_n" SIGIS="rst" SIGNAME="processing_system7_0_DDR_DRSTB">
+    <PORT DIR="IO" NAME="DDR_reset_n" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="processing_system7_0_DDR_DRSTB">
       <CONNECTIONS>
         <CONNECTION INSTANCE="processing_system7_0" PORT="DDR_DRSTB"/>
       </CONNECTIONS>
@@ -109,26 +109,18 @@
         <CONNECTION INSTANCE="processing_system7_0" PORT="PS_PORB"/>
       </CONNECTIONS>
     </PORT>
-    <PORT DIR="I" LEFT="5" NAME="rgb_leds_tri_i" RIGHT="0" SIGIS="undef" SIGNAME="base_io_gpio_io_i">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="base_io" PORT="gpio_io_i"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" LEFT="5" NAME="rgb_leds_tri_o" RIGHT="0" SIGIS="undef" SIGNAME="base_io_gpio_io_o">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="base_io" PORT="gpio_io_o"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" LEFT="5" NAME="rgb_leds_tri_t" RIGHT="0" SIGIS="undef" SIGNAME="base_io_gpio_io_t">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="base_io" PORT="gpio_io_t"/>
-      </CONNECTIONS>
-    </PORT>
     <PORT DIR="I" LEFT="1" NAME="btns_2bits_tri_i" RIGHT="0" SIGIS="undef" SIGNAME="base_io_gpio2_io_i">
       <CONNECTIONS>
         <CONNECTION INSTANCE="base_io" PORT="gpio2_io_i"/>
       </CONNECTIONS>
     </PORT>
+    <PORT DIR="I" NAME="rgb_leds_tri_i" SIGIS="undef"/>
+    <PORT DIR="O" LEFT="5" NAME="rgb_leds_tri_o" RIGHT="0" SIGIS="undef" SIGNAME="base_io_gpio_io_o">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="base_io" PORT="gpio_io_o"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="rgb_leds_tri_t" SIGIS="undef"/>
   </EXTERNALPORTS>
 
   <EXTERNALINTERFACES>
@@ -191,7 +183,7 @@
   </EXTERNALINTERFACES>
 
   <MODULES>
-    <MODULE COREREVISION="21" FULLNAME="/base_io" HWVERSION="2.0" INSTANCE="base_io" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="axi_gpio" VLNV="xilinx.com:ip:axi_gpio:2.0">
+    <MODULE COREREVISION="29" FULLNAME="/base_io" HWVERSION="2.0" INSTANCE="base_io" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="axi_gpio" VLNV="xilinx.com:ip:axi_gpio:2.0">
       <DOCUMENTS>
         <DOCUMENT SOURCE="http://www.xilinx.com/cgi-bin/docs/ipdoc?c=axi_gpio;v=v2_0;d=pg144-axi-gpio.pdf"/>
       </DOCUMENTS>
@@ -206,7 +198,7 @@
               <PROPERTY NAME="IS_ENABLED" VALUE="true"/>
               <PROPERTY NAME="RESET_VALUE" VALUE="0x0"/>
               <FIELDS>
-                <FIELD NAME="Channel-1 GPIO DATA">
+                <FIELD NAME="Channel_1_GPIO_DATA">
                   <PROPERTY NAME="DESCRIPTION" VALUE="AXI GPIO Data Register.&#xA;For each I/O bit programmed as input&#xA;  R - Reads value on the input pin.&#xA;  W - No effect.&#xA;For each I/O bit programmed as output&#xA;  R - Reads value on GPIO_O pins&#xA;  W - Writes value to the corresponding AXI GPIO &#xA;      data register bit and output pin&#xA;"/>
                   <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0"/>
                   <PROPERTY NAME="ACCESS" VALUE="read-write"/>
@@ -226,7 +218,7 @@
               <PROPERTY NAME="IS_ENABLED" VALUE="true"/>
               <PROPERTY NAME="RESET_VALUE" VALUE="0x0"/>
               <FIELDS>
-                <FIELD NAME="Channel-1 GPIO TRI">
+                <FIELD NAME="Channel_1_GPIO_TRI">
                   <PROPERTY NAME="DESCRIPTION" VALUE="AXI GPIO 3-State Control Register&#xA;Each I/O pin of the AXI GPIO is individually programmable as an input or output   For each of the bits     0 - I/O pin configured as output     1 - I/O pin configured as input&#xA;"/>
                   <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0"/>
                   <PROPERTY NAME="ACCESS" VALUE="read-write"/>
@@ -246,7 +238,7 @@
               <PROPERTY NAME="IS_ENABLED" VALUE="true"/>
               <PROPERTY NAME="RESET_VALUE" VALUE="0x0"/>
               <FIELDS>
-                <FIELD NAME="Channel-2 GPIO DATA">
+                <FIELD NAME="Channel_2_GPIO_DATA">
                   <PROPERTY NAME="DESCRIPTION" VALUE="AXI GPIO Data Register.&#xA;For each I/O bit programmed as input&#xA;  R - Reads value on the input pin.&#xA;  W - No effect.&#xA;For each I/O bit programmed as output&#xA;  R - Reads value on GPIO_O pins&#xA;  W - Writes value to the corresponding AXI GPIO &#xA;      data register bit and output pin&#xA;"/>
                   <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0"/>
                   <PROPERTY NAME="ACCESS" VALUE="read-write"/>
@@ -266,7 +258,7 @@
               <PROPERTY NAME="IS_ENABLED" VALUE="true"/>
               <PROPERTY NAME="RESET_VALUE" VALUE="0x0"/>
               <FIELDS>
-                <FIELD NAME="Channel-2 GPIO TRI">
+                <FIELD NAME="Channel_2_GPIO_TRI">
                   <PROPERTY NAME="DESCRIPTION" VALUE="AXI GPIO 3-State Control Register&#xA;Each I/O pin of the AXI GPIO is individually programmable as an input or output   For each of the bits     0 - I/O pin configured as output     1 - I/O pin configured as input&#xA;"/>
                   <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0"/>
                   <PROPERTY NAME="ACCESS" VALUE="read-write"/>
@@ -279,14 +271,14 @@
               </FIELDS>
             </REGISTER>
             <REGISTER NAME="GIER">
-              <PROPERTY NAME="DESCRIPTION" VALUE="Global Interrupt Enable register"/>
+              <PROPERTY NAME="DESCRIPTION" VALUE="Global_Interrupt_Enable register"/>
               <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x11C"/>
               <PROPERTY NAME="SIZE" VALUE="32"/>
               <PROPERTY NAME="ACCESS" VALUE="read-write"/>
               <PROPERTY NAME="IS_ENABLED" VALUE="true"/>
               <PROPERTY NAME="RESET_VALUE" VALUE="0x0"/>
               <FIELDS>
-                <FIELD NAME="Global Interrupt Enable">
+                <FIELD NAME="Global_Interrupt_Enable">
                   <PROPERTY NAME="DESCRIPTION" VALUE="Master enable for the device interrupt output&#xA;  0 - Disabled&#xA;  1 - Enabled&#xA;"/>
                   <PROPERTY NAME="ADDRESS_OFFSET" VALUE="31"/>
                   <PROPERTY NAME="ACCESS" VALUE="read-write"/>
@@ -306,7 +298,7 @@
               <PROPERTY NAME="IS_ENABLED" VALUE="true"/>
               <PROPERTY NAME="RESET_VALUE" VALUE="0x0"/>
               <FIELDS>
-                <FIELD NAME="Channel-1 Interrupt Enable">
+                <FIELD NAME="Channel_1_Interrupt_Enable">
                   <PROPERTY NAME="DESCRIPTION" VALUE="Enable Channel 1 Interrupt&#xA;  0 - Disabled (masked)&#xA;  1 - Enabled&#xA;"/>
                   <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0"/>
                   <PROPERTY NAME="ACCESS" VALUE="read-write"/>
@@ -316,7 +308,7 @@
                   <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
                   <PROPERTY NAME="BIT_WIDTH" VALUE="1"/>
                 </FIELD>
-                <FIELD NAME="Channel-2 Interrupt Enable">
+                <FIELD NAME="Channel_2_Interrupt_Enable">
                   <PROPERTY NAME="DESCRIPTION" VALUE="Enable Channel 2 Interrupt&#xA;  0 - Disabled (masked)&#xA;  1 - Enabled&#xA;"/>
                   <PROPERTY NAME="ADDRESS_OFFSET" VALUE="1"/>
                   <PROPERTY NAME="ACCESS" VALUE="read-write"/>
@@ -336,7 +328,7 @@
               <PROPERTY NAME="IS_ENABLED" VALUE="true"/>
               <PROPERTY NAME="RESET_VALUE" VALUE="0x0"/>
               <FIELDS>
-                <FIELD NAME="Channel-1 Interrupt Status">
+                <FIELD NAME="Channel_1_Interrupt_Status">
                   <PROPERTY NAME="DESCRIPTION" VALUE="Channel 1 Interrupt Status&#xA;  0 - No Channel 1 input interrupt&#xA;  1 - Channel 1 input interrupt&#xA;"/>
                   <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0"/>
                   <PROPERTY NAME="ACCESS" VALUE="read-write"/>
@@ -346,7 +338,7 @@
                   <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
                   <PROPERTY NAME="BIT_WIDTH" VALUE="1"/>
                 </FIELD>
-                <FIELD NAME="Channel-2 Interrupt Status">
+                <FIELD NAME="Channel_2_Interrupt_Status">
                   <PROPERTY NAME="DESCRIPTION" VALUE="Channel 2 Interrupt Status&#xA;  0 - No Channel 2 input interrupt&#xA;  1 - Channel 2 input interrupt&#xA;"/>
                   <PROPERTY NAME="ADDRESS_OFFSET" VALUE="1"/>
                   <PROPERTY NAME="ACCESS" VALUE="read-write"/>
@@ -369,11 +361,11 @@
         <PARAMETER NAME="C_GPIO2_WIDTH" VALUE="2"/>
         <PARAMETER NAME="C_ALL_INPUTS" VALUE="0"/>
         <PARAMETER NAME="C_ALL_INPUTS_2" VALUE="1"/>
-        <PARAMETER NAME="C_ALL_OUTPUTS" VALUE="0"/>
+        <PARAMETER NAME="C_ALL_OUTPUTS" VALUE="1"/>
         <PARAMETER NAME="C_ALL_OUTPUTS_2" VALUE="0"/>
         <PARAMETER NAME="C_INTERRUPT_PRESENT" VALUE="0"/>
         <PARAMETER NAME="C_DOUT_DEFAULT" VALUE="0x00000000"/>
-        <PARAMETER NAME="C_TRI_DEFAULT" VALUE="0x00000000"/>
+        <PARAMETER NAME="C_TRI_DEFAULT" VALUE="0xFFFFFFFF"/>
         <PARAMETER NAME="C_IS_DUAL" VALUE="1"/>
         <PARAMETER NAME="C_DOUT_DEFAULT_2" VALUE="0x00000000"/>
         <PARAMETER NAME="C_TRI_DEFAULT_2" VALUE="0xFFFFFFFF"/>
@@ -391,7 +383,7 @@
             <CONNECTION INSTANCE="processing_system7_0" PORT="FCLK_CLK0"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="s_axi_aresetn" SIGIS="rst" SIGNAME="rst_ps7_0_50M_peripheral_aresetn">
+        <PORT DIR="I" NAME="s_axi_aresetn" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="rst_ps7_0_50M_peripheral_aresetn">
           <CONNECTIONS>
             <CONNECTION INSTANCE="rst_ps7_0_50M" PORT="peripheral_aresetn"/>
           </CONNECTIONS>
@@ -481,19 +473,9 @@
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M00_AXI_rready"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="5" NAME="gpio_io_i" RIGHT="0" SIGIS="undef" SIGNAME="base_io_gpio_io_i">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="design_1_imp" PORT="rgb_leds_tri_i"/>
-          </CONNECTIONS>
-        </PORT>
         <PORT DIR="O" LEFT="5" NAME="gpio_io_o" RIGHT="0" SIGIS="undef" SIGNAME="base_io_gpio_io_o">
           <CONNECTIONS>
             <CONNECTION INSTANCE="design_1_imp" PORT="rgb_leds_tri_o"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="5" NAME="gpio_io_t" RIGHT="0" SIGIS="undef" SIGNAME="base_io_gpio_io_t">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="design_1_imp" PORT="rgb_leds_tri_t"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="1" NAME="gpio2_io_i" RIGHT="0" SIGIS="undef" SIGNAME="base_io_gpio2_io_i">
@@ -528,7 +510,7 @@
           <PARAMETER NAME="NUM_READ_OUTSTANDING" VALUE="8"/>
           <PARAMETER NAME="NUM_WRITE_OUTSTANDING" VALUE="8"/>
           <PARAMETER NAME="MAX_BURST_LENGTH" VALUE="1"/>
-          <PARAMETER NAME="PHASE" VALUE="0.000"/>
+          <PARAMETER NAME="PHASE" VALUE="0.0"/>
           <PARAMETER NAME="CLK_DOMAIN" VALUE="design_1_processing_system7_0_1_FCLK_CLK0"/>
           <PARAMETER NAME="NUM_READ_THREADS" VALUE="4"/>
           <PARAMETER NAME="NUM_WRITE_THREADS" VALUE="4"/>
@@ -557,9 +539,7 @@
         </BUSINTERFACE>
         <BUSINTERFACE BUSNAME="base_io_GPIO" NAME="GPIO" TYPE="INITIATOR" VLNV="xilinx.com:interface:gpio:1.0">
           <PORTMAPS>
-            <PORTMAP LOGICAL="TRI_I" PHYSICAL="gpio_io_i"/>
             <PORTMAP LOGICAL="TRI_O" PHYSICAL="gpio_io_o"/>
-            <PORTMAP LOGICAL="TRI_T" PHYSICAL="gpio_io_t"/>
           </PORTMAPS>
         </BUSINTERFACE>
         <BUSINTERFACE BUSNAME="base_io_GPIO2" NAME="GPIO2" TYPE="INITIATOR" VLNV="xilinx.com:interface:gpio:1.0">
@@ -1711,15 +1691,15 @@
         </PORT>
         <PORT CLKFREQUENCY="50000000" DIR="O" NAME="FCLK_CLK0" SIGIS="clk" SIGNAME="processing_system7_0_FCLK_CLK0">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="processing_system7_0" PORT="M_AXI_GP0_ACLK"/>
-            <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="S00_ACLK"/>
-            <CONNECTION INSTANCE="rst_ps7_0_50M" PORT="slowest_sync_clk"/>
-            <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M00_ACLK"/>
-            <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="ACLK"/>
             <CONNECTION INSTANCE="base_io" PORT="s_axi_aclk"/>
+            <CONNECTION INSTANCE="processing_system7_0" PORT="M_AXI_GP0_ACLK"/>
+            <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="ACLK"/>
+            <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="S00_ACLK"/>
+            <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M00_ACLK"/>
+            <CONNECTION INSTANCE="rst_ps7_0_50M" PORT="slowest_sync_clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="FCLK_RESET0_N" SIGIS="rst" SIGNAME="processing_system7_0_FCLK_RESET0_N">
+        <PORT DIR="O" NAME="FCLK_RESET0_N" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="processing_system7_0_FCLK_RESET0_N">
           <CONNECTIONS>
             <CONNECTION INSTANCE="rst_ps7_0_50M" PORT="ext_reset_in"/>
           </CONNECTIONS>
@@ -1907,7 +1887,7 @@
           <PARAMETER NAME="HAS_BRESP" VALUE="1"/>
           <PARAMETER NAME="HAS_RRESP" VALUE="1"/>
           <PARAMETER NAME="MAX_BURST_LENGTH" VALUE="16"/>
-          <PARAMETER NAME="PHASE" VALUE="0.000"/>
+          <PARAMETER NAME="PHASE" VALUE="0.0"/>
           <PARAMETER NAME="CLK_DOMAIN" VALUE="design_1_processing_system7_0_1_FCLK_CLK0"/>
           <PARAMETER NAME="NUM_READ_THREADS" VALUE="4"/>
           <PARAMETER NAME="NUM_WRITE_THREADS" VALUE="4"/>
@@ -1963,7 +1943,7 @@
         <PERIPHERAL INSTANCE="base_io"/>
       </PERIPHERALS>
     </MODULE>
-    <MODULE COREREVISION="20" FULLNAME="/ps7_0_axi_periph" HWVERSION="2.1" INSTANCE="ps7_0_axi_periph" IPTYPE="BUS" IS_ENABLE="1" MODCLASS="BUS" MODTYPE="axi_interconnect" VLNV="xilinx.com:ip:axi_interconnect:2.1">
+    <MODULE COREREVISION="28" FULLNAME="/ps7_0_axi_periph" HWVERSION="2.1" INSTANCE="ps7_0_axi_periph" IPTYPE="BUS" IS_ENABLE="1" MODCLASS="BUS" MODTYPE="axi_interconnect" VLNV="xilinx.com:ip:axi_interconnect:2.1">
       <DOCUMENTS>
         <DOCUMENT SOURCE="http://www.xilinx.com/cgi-bin/docs/ipdoc?c=axi_interconnect;v=v2_1;d=pg059-axi-interconnect.pdf"/>
       </DOCUMENTS>
@@ -2725,24 +2705,24 @@
             <CONNECTION INSTANCE="processing_system7_0" PORT="FCLK_CLK0"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="ext_reset_in" SIGIS="rst" SIGNAME="processing_system7_0_FCLK_RESET0_N">
+        <PORT DIR="I" NAME="ext_reset_in" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="processing_system7_0_FCLK_RESET0_N">
           <CONNECTIONS>
             <CONNECTION INSTANCE="processing_system7_0" PORT="FCLK_RESET0_N"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="aux_reset_in" SIGIS="rst"/>
-        <PORT DIR="I" NAME="mb_debug_sys_rst" SIGIS="rst"/>
+        <PORT DIR="I" NAME="aux_reset_in" POLARITY="ACTIVE_LOW" SIGIS="rst"/>
+        <PORT DIR="I" NAME="mb_debug_sys_rst" POLARITY="ACTIVE_HIGH" SIGIS="rst"/>
         <PORT DIR="I" NAME="dcm_locked" SIGIS="undef"/>
-        <PORT DIR="O" NAME="mb_reset" SIGIS="rst"/>
-        <PORT DIR="O" LEFT="0" NAME="bus_struct_reset" RIGHT="0" SIGIS="rst"/>
-        <PORT DIR="O" LEFT="0" NAME="peripheral_reset" RIGHT="0" SIGIS="rst"/>
-        <PORT DIR="O" LEFT="0" NAME="interconnect_aresetn" RIGHT="0" SIGIS="rst"/>
-        <PORT DIR="O" LEFT="0" NAME="peripheral_aresetn" RIGHT="0" SIGIS="rst" SIGNAME="rst_ps7_0_50M_peripheral_aresetn">
+        <PORT DIR="O" NAME="mb_reset" POLARITY="ACTIVE_HIGH" SIGIS="rst"/>
+        <PORT DIR="O" LEFT="0" NAME="bus_struct_reset" POLARITY="ACTIVE_HIGH" RIGHT="0" SIGIS="rst"/>
+        <PORT DIR="O" LEFT="0" NAME="peripheral_reset" POLARITY="ACTIVE_HIGH" RIGHT="0" SIGIS="rst"/>
+        <PORT DIR="O" LEFT="0" NAME="interconnect_aresetn" POLARITY="ACTIVE_LOW" RIGHT="0" SIGIS="rst"/>
+        <PORT DIR="O" LEFT="0" NAME="peripheral_aresetn" POLARITY="ACTIVE_LOW" RIGHT="0" SIGIS="rst" SIGNAME="rst_ps7_0_50M_peripheral_aresetn">
           <CONNECTIONS>
+            <CONNECTION INSTANCE="base_io" PORT="s_axi_aresetn"/>
+            <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="ARESETN"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="S00_ARESETN"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M00_ARESETN"/>
-            <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="ARESETN"/>
-            <CONNECTION INSTANCE="base_io" PORT="s_axi_aresetn"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
