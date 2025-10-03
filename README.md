@@ -23,7 +23,7 @@ sudo pip3 install PyYAML
 
 ### Download/fetch fails
 
-Simple run `make ...` again.
+Simply run `make ...` again.
 
 ### Device tree compile error
 
