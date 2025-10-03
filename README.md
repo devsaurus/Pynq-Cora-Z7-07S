@@ -1,10 +1,12 @@
 # Pynq-Cora-Z7-07S
 
-Install tools and docker as per https://pynq.readthedocs.io/en/latest/pynq_sd_card.html
+Pre-built SD card image can be downloaded from the [release assets](https://github.com/devsaurus/Pynq-Cora-Z7-07S/releases).
 
 ## Build inside docker
 
-This repo must be accessible from within the docker container. E.g. clone it in /workspace
+Install tools and docker as per https://pynq.readthedocs.io/en/latest/pynq_sd_card.html
+
+This repo must be accessible from within the docker container. E.g. clone it in `/workspace`.
 
 `make BOARDDIR=<path to this repo>`
 
