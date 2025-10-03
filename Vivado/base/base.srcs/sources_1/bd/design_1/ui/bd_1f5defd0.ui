@@ -1,6 +1,10 @@
 {
+   "ActiveEmotionalView":"Default View",
+   "Default View_ScaleFactor":"1.0",
+   "Default View_TopLeft":"-99,-51",
    "ExpandedHierarchyInLayout":"",
-   "guistr":"# # String gsaved with Nlview 7.0.19  2019-03-26 bk=1.5019 VDI=41 GEI=35 GUI=JA:9.0 non-TLS-threadsafe
+   "PinnedPorts":"",
+   "guistr":"# # String gsaved with Nlview 7.7.1 2023-07-26 3bc4126617 VDI=43 GEI=38 GUI=JA:21.0 TLS
 #  -string -flagsOSRD
 preplace port DDR -pg 1 -lvl 4 -x 940 -y 60 -defaultsOSRD
 preplace port FIXED_IO -pg 1 -lvl 4 -x 940 -y 80 -defaultsOSRD
